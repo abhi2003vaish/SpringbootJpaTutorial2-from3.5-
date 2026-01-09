@@ -5,6 +5,7 @@ import com.codingshuttle.jpaTutorial2.hospitalManagementSystem.dto.CPatientInfo;
 import com.codingshuttle.jpaTutorial2.hospitalManagementSystem.dto.IPatientInfo;
 import com.codingshuttle.jpaTutorial2.hospitalManagementSystem.entity.Patient;
 import com.codingshuttle.jpaTutorial2.hospitalManagementSystem.repositories.PatientRepository;
+import com.codingshuttle.jpaTutorial2.hospitalManagementSystem.service.PatientService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,6 +17,9 @@ public class PatientServiceTest {
 
     @Autowired
     private PatientRepository patientRepository;
+
+    @Autowired
+    private PatientService patientService;
 
 
     @Test
@@ -59,6 +63,24 @@ public class PatientServiceTest {
     public void testPatientNameWithId(){
         int rowAffected=patientRepository.updatePatientNameWithId("Aloo",1L);
         System.out.println("Rows affected: "+rowAffected);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @Test
+    public void testPatientTransaction(){
+        patientService.testPatientTransactiom();
     }
 
 }
