@@ -68,16 +68,6 @@ public class PatientServiceTest {
 
 
 
-
-
-
-
-
-
-
-
-
-
     @Test
     public void testPatientTransaction(){
         patientService.testPatientTransactiom();
