@@ -30,11 +30,15 @@ public class Patient {
     @CreationTimestamp
     private LocalDateTime createdAt;
 
-    @OneToOne
+//    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+    @OneToOne(cascade = CascadeType.ALL )
     @JoinColumn(name="patient_insurance")
-    private Insurance insurance;//own side
+//    @ToString.Exclude
+    private Insurance insurance;  //own side
 
-    @OneToMany(mappedBy = "patient")  //inverse side
+
+//Cascading is directional
+    @OneToMany(mappedBy = "patient", cascade=CascadeType.ALL)  //inverse side
     private List<Appointment> appointments=new ArrayList<>();
 //    private Set<Appointment> appointments=new HashSet<>();
 

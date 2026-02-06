@@ -73,4 +73,9 @@ public class PatientServiceTest {
         patientService.testPatientTransactiom();
     }
 
+    @Test
+    public void testDeletePatient(){
+        patientService.deletePatient(1L);
+    }
+
 }

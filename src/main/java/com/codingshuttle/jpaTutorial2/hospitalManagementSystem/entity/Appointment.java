@@ -1,10 +1,8 @@
 package com.codingshuttle.jpaTutorial2.hospitalManagementSystem.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import org.apache.logging.log4j.util.Lazy;
 
 import java.time.LocalDateTime;
 
@@ -13,6 +11,8 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
+@ToString
 public class Appointment {
 
     @Id
@@ -27,10 +27,13 @@ public class Appointment {
 
     @ManyToOne  //own side
     @JoinColumn(nullable=false)
+    @ToString.Exclude
+//    @JsonIgnore
     private Patient patient;
 
     @ManyToOne  //own side
     @JoinColumn(nullable=false)
+    @ToString.Exclude
     private Doctor doctor;
 
 

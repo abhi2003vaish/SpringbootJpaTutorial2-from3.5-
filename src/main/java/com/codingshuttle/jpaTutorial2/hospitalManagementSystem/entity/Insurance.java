@@ -2,10 +2,7 @@ package com.codingshuttle.jpaTutorial2.hospitalManagementSystem.entity;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
@@ -16,6 +13,9 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
+@ToString    //@ToString in entity is discouraged behaviour because it will cause StackOverflowError in bidirectional
+// relationships and moreover it may fetch lazy loaded associations unintentionally.
 public class Insurance{
 
     @Id
