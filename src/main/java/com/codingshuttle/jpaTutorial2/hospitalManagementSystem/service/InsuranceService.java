@@ -33,4 +33,28 @@ public class InsuranceService {
         Patient patient = patientRepository.findById(patientId).orElseThrow();
         patientRepository.delete(patient);
     }
+
+
+    @Transactional
+    public Insurance updateInsuranceOfAPatient(Insurance insurance, Long patientId){
+        Patient patient = patientRepository.findById(patientId).orElseThrow();
+
+        patient.setInsurance(insurance);  // dirty patient
+
+        insurance.setPatient(patient);
+
+        return insurance;
+
+    }
+
+
+    @Transactional
+    public Patient removeInsuranceOfAPatient(Long patientId){
+        Patient patient = patientRepository.findById(patientId).orElseThrow();
+
+        patient.setInsurance(null);//dirty patient
+
+        return patient;
+    }
+
 }

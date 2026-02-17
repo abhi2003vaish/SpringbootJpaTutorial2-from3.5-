@@ -13,6 +13,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class Patient {
 
     @Id
@@ -31,14 +32,15 @@ public class Patient {
     private LocalDateTime createdAt;
 
 //    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
-    @OneToOne(cascade = CascadeType.ALL )
+    @OneToOne(cascade = CascadeType.ALL ,orphanRemoval = true , fetch =  FetchType.LAZY)
     @JoinColumn(name="patient_insurance")
 //    @ToString.Exclude
     private Insurance insurance;  //own side
 
 
 //Cascading is directional
-    @OneToMany(mappedBy = "patient", cascade=CascadeType.ALL)  //inverse side
+//    @ToString.Exclude
+    @OneToMany(mappedBy = "patient", cascade=CascadeType.ALL, fetch=FetchType.EAGER)  //inverse side
     private List<Appointment> appointments=new ArrayList<>();
 //    private Set<Appointment> appointments=new HashSet<>();
 

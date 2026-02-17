@@ -36,5 +36,6 @@ public class Insurance{
     private LocalDateTime createdAt;
 
     @OneToOne(mappedBy= "insurance")
+    @ToString.Exclude
     private Patient patient;//inverse side
 }

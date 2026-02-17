@@ -78,4 +78,13 @@ public class PatientServiceTest {
         patientService.deletePatient(1L);
     }
 
+    @Test
+    public void testPatient2(){
+        List<Patient> patientList=patientRepository.getAllPatientsWithAppointments();
+
+        for(Patient p:patientList){
+            System.out.println(p);
+        }
+    }
+
 }

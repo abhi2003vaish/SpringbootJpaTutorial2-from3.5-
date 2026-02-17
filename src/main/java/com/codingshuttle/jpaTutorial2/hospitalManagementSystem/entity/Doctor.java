@@ -1,10 +1,7 @@
 package com.codingshuttle.jpaTutorial2.hospitalManagementSystem.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -32,6 +29,7 @@ public class Doctor{
     private String email;
 
     @OneToMany(mappedBy = "doctor")  //inverse side
+    @ToString.Exclude
     private Set<Appointment> appointments=new HashSet<>();
 //    private List<Appointment> appointments=new ArrayList<>();
 

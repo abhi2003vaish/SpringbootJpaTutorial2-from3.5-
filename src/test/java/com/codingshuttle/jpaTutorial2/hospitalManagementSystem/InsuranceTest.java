@@ -31,4 +31,20 @@ public class InsuranceTest {
     public void testDeletePatient(){
         insuranceService.deletePatient(1L);
     }
+
+    @Test
+    public void testRemoveInsuranceOfAPatient(){
+        Insurance insurance=Insurance.builder()
+                .provider("HDFC Ergo")
+                .policyNumber("HDFC_236")
+                .validUntil(LocalDate.of(2030,1,1))
+                .build();
+
+        var updatedInsurance=insuranceService.assignInsuranceToPatient(insurance,1L);
+        System.out.println("Updated Insurance: "+updatedInsurance);
+
+        var patient=insuranceService.removeInsuranceOfAPatient(1L);
+        System.out.println("Patient after removing insurance: "+patient);
+
+    }
 }
